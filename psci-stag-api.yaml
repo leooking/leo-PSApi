@@ -1,0 +1,147 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    client.knative.dev/user-image: us-central1-docker.pkg.dev/pscibis-stag/cloud-run-source-deploy/psci-stag-api
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/operation-id: 081bb1f9-3443-4ce0-b891-f113ccd3be3b
+  labels:
+    cloud.googleapis.com/location: us-central1
+  name: psci-stag-api
+  namespace: '597763609004'
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        autoscaling.knative.dev/minScale: '1'
+        client.knative.dev/user-image: us-central1-docker.pkg.dev/pscibis-stag/cloud-run-source-deploy/psci-stag-api
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 419.0.0
+      name: psci-stag-api-00081-xim
+    spec:
+      containerConcurrency: 80
+      containers:
+      - env:
+        - name: RAILS_LOG_TO_STDOUT
+          value: 'true'
+        - name: PSCI_OPENAI_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: PSCI_OPENAI_KEY
+        - name: PSCI_VEX_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: PSCI_VEX_API_KEY
+        - name: ZEPTOMAIL_SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ZEPTOMAIL_SMTP_PASSWORD
+        - name: GOOGLE_PROJECT_NAME
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: GOOGLE_PROJECT_NAME
+        - name: STORAGE_PROJECT
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: GOOGLE_PROJECT_NAME
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_NAME
+        - name: MAILER_APP_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: MAILER_APP_URL
+        - name: DB_HOSTNAME
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_HOSTNAME
+        - name: ZEPTOMAIL_SMTP_SENDER
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ZEPTOMAIL_SMTP_SENDER
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: API_KEY
+        - name: PSCI_VEX_BASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: PSCI_VEX_BASE_URL
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_USERNAME
+        - name: ARGON_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ARGON_KEY
+        - name: ZEPTOMAIL_SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ZEPTOMAIL_SMTP_HOST
+        - name: PSCI_QDRANT_HOST
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: PSCI_QDRANT_HOST
+        - name: STORAGE_CREDENTIALS
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: STORAGE_CREDENTIALS
+        - name: PSCI_QDRANT_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: PSCI_QDRANT_API_KEY
+        - name: SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: SECRET_KEY_BASE
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_PASSWORD
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DATABASE_URL
+        image: us-central1-docker.pkg.dev/pscibis-stag/cloud-run-source-deploy/psci-stag-api@sha256:743d87e312c472c9427b59a937289810fded641277ab7fcf8ed3ba58bb9ce1d0
+        ports:
+        - containerPort: 8080
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        startupProbe:
+          failureThreshold: 1
+          periodSeconds: 240
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 240
+      serviceAccountName: 597763609004-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100

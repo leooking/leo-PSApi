@@ -1,0 +1,110 @@
+rails g model organization  name url email_domain objectives pid
+rails g model group         organization_id:integer pid
+rails g model user          fname lname email pid
+rails g model role          name
+
+rails g model organization_group  organization_id:integer group_id:integer
+rails g model group_user    group_id:integer user_id:integer
+rails g model user_role     user_id:integer role_id:integer
+
+rails g model project       organization_id:integer user_id:integer type status title description pid
+
+rails g model resource      project_id:integer user_id:integer type name description link pid          (poly project score price)
+rails g model note          project_id:integer user_id:integer text pid                                (poly project score price attachment)
+rails g model score         project_id:integer user_id:integer attribute evaluator_id:integer score:integer weight:integer pid
+rails g model price         project_id:integer user_id:integer component dollars:integer pid
+
+rails g model project_team  project_id:integer user_id:integer
+rails g model project_resource  project_id:integer resource_id:integer
+
+rails g scaffold_controller Project
+rails g scaffold_controller Resource
+rails g scaffold_controller Note
+
+rails g model asset       project_id:integer user_id:integer name description source text pid asset_type state
+rails g model generator   name description provider endpoint generator_type state pid
+rails g model generator_log generator_id:integer asset_id:integer user_id:integer json_response:jsonb
+
+
+# rbac comes later
+rails g model permission   name
+rails g model role_permission role_id:integer permission_id:integer
+
+# Cruft
+
+rails g model project_focus         the bid we're preparing
+rails g model project_resources     the bid we're using for background
+rails g model project_team  organization_id:integer user_id:integer
+rails g model bid       organization_id:integer user_id:integer type status title description pid
+
+====
+
+# Todo
+
+setup 
+X  activeadmin
+  audited
+  authn
+  authz
+
+==== Scratchpad 
+
+1) Generator POSTs /assetz to create
+2) Create asset
+3) Call GenerateAsset Job
+4)   Calls AssetGeneratorService
+5)     Calls the API
+6)     Logs the API call
+7)       Update asset with response
+
+====
+
+curl https://api.openai.com/v1/completions -k \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer sk-..." \
+-d '{"model": "text-davinci-003", "prompt": "Say this is a test", "temperature": 0, "max_tokens": 7}'
+
+curl https://api.openai.com/v1/completions \
+  -H 'Content-Type: application/json' \
+  -k \
+  -H 'Authorization: Bearer ....' \
+  -d '{
+  "model": "text-davinci-003",
+  "prompt": "Say this is a test",
+  "max_tokens": 7,
+  "temperature": 0
+}'
+
+gcloud projects get-iam-policy pscibis-stag  \
+--flatten="bindings[].members" \
+--format='table(bindings.role)' \
+--filter="bindings.members:597763609004-compute@developer.gserviceaccount.com"
+
+gcloud projects get-iam-policy pscibis-stag  \
+--flatten="bindings[].members" \
+--format='table(bindings.role)' \
+--filter="bindings.members:pscibis-stag-api-storage@pscibis-stag.iam.gserviceaccount.com"
+
+gcloud projects get-iam-policy pscibis-stag  \
+--flatten="bindings[].members" \
+--format='table(bindings.role)' \
+--filter="bindings.members:psci-stag-vector-storage@pscibis-stag.iam.gserviceaccount.com"
+
+====
+https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference
+
+curl https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME/chat/completions?api-version=2023-03-15-preview \
+  -H "Content-Type: application/json" \
+  -H "api-key: YOUR_API_KEY" \
+  -d '{"messages":[{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "Does Azure OpenAI support customer managed keys?"},{"role": "assistant", "content": "Yes, customer managed keys are supported by Azure OpenAI."},{"role": "user", "content": "Do other Azure Cognitive Services support this too?"}]}'
+
+
+curl 'https://psci-bis.openai.azure.com/openai/deployments/psci-api-35-turbo/chat/completions?api-version=2023-03-15-preview' \
+  -H "Content-Type: application/json" \
+  -H "api-key: f4a3b72b50b445ab80c89e0a0495fb0b" \
+  -d '{"messages":[{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "Does Azure OpenAI support customer managed keys?"},{"role": "assistant", "content": "Yes, customer managed keys are supported by Azure OpenAI."},{"role": "user", "content": "Do other Azure Cognitive Services support this too?"}]}'
+
+curl https://management.azure.com/subscriptions/69419598-5369-45fd-9e7e-9605b04e43d4/providers?api-version=2022-09-01
+
+Req on POST /resources:
+{"name"=>"Sam System Account User Guide v3", "description"=>"", "source_list"=>"", "data_asset"=>#<ActionDispatch::Http::UploadedFile:0x00003eb6d5ffac88 @tempfile=#<Tempfile:/tmp/RackMultipart20230706-1-1dxthif.pdf>, @original_filename="SAM System Account User Guide v3.01.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"data_asset\"; filename=\"SAM System Account User Guide v3.01.pdf\"\r\nContent-Type: application/pdf\r\n">, "scope"=>"org"}

@@ -1,0 +1,9 @@
+{ "generate_new_prompt": "Concisely and exhaustively evaluate the following text and respond to the requirements within:", "add_detail_prompt": "You've been tasked with extending the text given to you. Make it more detailed informative and descriptive. Respond to the following:", "summary_report": "Please summarize the following:", "explain_prompt": "Explain this as if talking to a 10th grader:", "make_suggestions_prompt": "Take this requirement, give me tips and suggestions how to respond and be in compliance, return in list format:" }
+
+{
+	"generate_new_prompt": "Concisely and exhaustively evaluate the following text and respond to the requirements within:",
+	"add_detail_prompt": "You've been tasked with extending the text given to you. Make it more detailed informative and descriptive. Respond to the following:",
+	"summary_report": "Please summarize the following:",
+	"explain_prompt": "Explain this as if talking to a 10th grader:",
+	"make_suggestions_prompt": "Take this requirement, give me tips and suggestions how to respond and be in compliance, return in list format:"
+}

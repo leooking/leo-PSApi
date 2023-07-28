@@ -1,0 +1,88 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    client.knative.dev/user-image: us-central1-docker.pkg.dev/pscibis-stag/cloud-run-source-deploy/psci-stag-api
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/operation-id: c56a8bd4-65e2-4042-9964-7be51bee6af5
+  labels:
+    cloud.googleapis.com/location: us-central1
+  name: psci-stag-api
+  namespace: '597763609004'
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        client.knative.dev/user-image: us-central1-docker.pkg.dev/pscibis-stag/cloud-run-source-deploy/psci-stag-api
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 412.0.0
+      name: psci-stag-api-00012-yez
+    spec:
+      containerConcurrency: 80
+      containers:
+      - env:
+        - name: ZEPTOMAIL_SMTP_SENDER
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ZEPTOMAIL_SMTP_SENDER
+        - name: PSCI_OPENAI_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: PSCI_OPENAI_KEY
+        - name: ZEPTOMAIL_SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ZEPTOMAIL_SMTP_PASSWORD
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: API_KEY
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: DATABASE_URL
+        - name: ARGON_KEY
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ARGON_KEY
+        - name: ZEPTOMAIL_SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: ZEPTOMAIL_SMTP_HOST
+        - name: GOOGLE_PROJECT_NAME
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: GOOGLE_PROJECT_NAME
+        - name: CLOUD_STORAGE_JSON
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: CLOUD_STORAGE_JSON
+        - name: SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              key: '1'
+              name: SECRET_KEY_BASE
+        image: us-central1-docker.pkg.dev/pscibis-stag/cloud-run-source-deploy/psci-stag-api@sha256:5c6334f708752b502f28ebc3a782ce9d07235caf5bf4b91d7aa3e381303ada13
+        ports:
+        - containerPort: 8080
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+      serviceAccountName: 597763609004-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100

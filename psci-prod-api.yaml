@@ -1,0 +1,142 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    client.knative.dev/user-image: us-central1-docker.pkg.dev/pscibis-prod/cloud-run-source-deploy/psci-prod-api
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/operation-id: 1563e031-f6b7-4e33-8a63-51010bc23361
+  labels:
+    cloud.googleapis.com/location: us-central1
+  name: psci-prod-api
+  namespace: '153419342863'
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        autoscaling.knative.dev/minScale: '1'
+        client.knative.dev/user-image: us-central1-docker.pkg.dev/pscibis-prod/cloud-run-source-deploy/psci-prod-api
+        run.googleapis.com/client-name: cloud-console
+        run.googleapis.com/cloudsql-instances: pscibis-prod:us-central1:psci-prod-pg
+      name: psci-prod-api-00017-xic
+    spec:
+      containerConcurrency: 80
+      containers:
+      - env:
+        - name: RAILS_LOG_TO_STDOUT
+          value: 'true'
+        - name: PSCI_VEX_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: PSCI_VEX_API_KEY
+        - name: PSCI_OPENAI_KEY
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: PSCI_OPENAI_KEY
+        - name: ZEPTOMAIL_SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: ZEPTOMAIL_SMTP_PASSWORD
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_NAME
+        - name: MAILER_APP_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: MAILER_APP_URL
+        - name: DB_HOSTNAME
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_HOSTNAME
+        - name: ZEPTOMAIL_SMTP_SENDER
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: ZEPTOMAIL_SMTP_SENDER
+        - name: PSCI_VEX_BASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: PSCI_VEX_BASE_URL
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DATABASE_URL
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: API_KEY
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_USERNAME
+        - name: ARGON_KEY
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: ARGON_KEY
+        - name: ZEPTOMAIL_SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: ZEPTOMAIL_SMTP_HOST
+        - name: PSCI_QDRANT_HOST
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: PSCI_QDRANT_HOST
+        - name: STORAGE_PROJECT
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: STORAGE_PROJECT
+        - name: STORAGE_CREDENTIALS
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: STORAGE_CREDENTIALS
+        - name: PSCI_QDRANT_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: PSCI_QDRANT_API_KEY
+        - name: SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: SECRET_KEY_BASE
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DB_PASSWORD
+        image: us-central1-docker.pkg.dev/pscibis-prod/cloud-run-source-deploy/psci-prod-api@sha256:d4264cdad0eae0b8d14d3c253fa63588539bdc2d1f6a18b32562a0cf08526f03
+        ports:
+        - containerPort: 8080
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        startupProbe:
+          failureThreshold: 1
+          periodSeconds: 240
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 240
+      serviceAccountName: 153419342863-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100

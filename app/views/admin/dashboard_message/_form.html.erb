@@ -1,0 +1,30 @@
+<%= form_for :dashboard_message, :url=>{:action=>"add_dashboard_message"}, :html => { :multipart => true } do |f| %>
+  <table>
+    <tr>
+      <td>
+        <label for="org_ids">
+          <b>Select Orgs:</b>
+        </label>
+        <br />
+        <br />
+        <%= f.collection_check_boxes :org_ids, Org.all.order(:name), :pid, :name do |b| %>
+          &nbsp;&nbsp;&nbsp;&nbsp; <%= b.label(class:"label-checkbox") { b.check_box(checked: true) + b.text } %>
+          <br />
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="message">
+          Dashboard Message:
+        </label>
+        <%= f.text_area :message, :placeholder => 'Apply the same message to the selected orgs' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= submit_tag 'Submit' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

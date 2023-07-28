@@ -1,0 +1,157 @@
+{
+  "totalRecords": 1384,
+  "limit": 1000,
+  "offset": 0,
+  "opportunitiesData": [
+      {
+          "noticeId": "ffeb482cec184b6a92833124188e9413",
+          "title": "66--RACK ASSEMBLY",
+          "solicitationNumber": "N0010423QEA72",
+          "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSUP.NAVSUP WEAPON SYSTEMS SUPPORT.NAVSUP WSS MECHANICSBURG.NAVSUP WEAPON SYSTEMS SUPPORT MECH",
+          "fullParentPathCode": "017.1700.NAVSUP.NAVSUP WSS.NAVSUP WSS MECH.N00104",
+          "postedDate": "2023-06-09",
+          "type": "Solicitation",
+          "baseType": "Solicitation",
+          "archiveType": "auto15",
+          "archiveDate": "2023-07-14",
+          "typeOfSetAsideDescription": null,
+          "typeOfSetAside": "",
+          "responseDeadLine": "2023-06-29T16:30:00-04:00",
+          "naicsCode": "334511",
+          "naicsCodes": [
+              "334511"
+          ],
+          "classificationCode": "6610",
+          "active": "Yes",
+          "award": null,
+          "pointOfContact": [
+              {
+                  "fax": null,
+                  "type": "primary",
+                  "email": "COLIN.OBRIEN1@NAVY.MIL",
+                  "phone": null,
+                  "title": null,
+                  "fullName": "Telephone: 7176055769"
+              }
+          ],
+          "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=ffeb482cec184b6a92833124188e9413",
+          "organizationType": "OFFICE",
+          "officeAddress": {
+              "zipcode": "17050-0788",
+              "city": "MECHANICSBURG",
+              "countryCode": "USA",
+              "state": "PA"
+          },
+          "placeOfPerformance": null,
+          "additionalInfoLink": null,
+          "uiLink": "https://sam.gov/opp/ffeb482cec184b6a92833124188e9413/view",
+          "links": [
+              {
+                  "rel": "self",
+                  "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=ffeb482cec184b6a92833124188e9413&limit=1"
+              }
+          ],
+          "resourceLinks": null
+      },
+      {
+          "noticeId": "ff8dd7b93511421abc1db401cd61ecd3",
+          "title": "47--STRAINER,SEDIMENT",
+          "solicitationNumber": "SPE7M323Q0108",
+          "fullParentPathName": "DEPT OF DEFENSE.DEFENSE LOGISTICS AGENCY (DLA).DLA MARITIME.DLA MARITIME COLUMBUS.DLA LAND AND MARITIME",
+          "fullParentPathCode": "097.97AS.DLA MARITIME.DLA MARITIME COLUMBS.SPE7M3",
+          "postedDate": "2023-06-09",
+          "type": "Combined Synopsis/Solicitation",
+          "baseType": "Combined Synopsis/Solicitation",
+          "archiveType": "autocustom",
+          "archiveDate": "2023-07-23",
+          "typeOfSetAsideDescription": "Total Small Business Set-Aside (FAR 19.5)",
+          "typeOfSetAside": "SBA",
+          "responseDeadLine": "2023-06-23",
+          "naicsCode": "332996",
+          "naicsCodes": [
+              "332996"
+          ],
+          "classificationCode": "47",
+          "active": "Yes",
+          "award": null,
+          "pointOfContact": [
+              {
+                  "fax": null,
+                  "type": "primary",
+                  "email": "DibbsBSM@dla.mil",
+                  "phone": null,
+                  "title": null,
+                  "fullName": "Questions regarding this solicitation should be emailed to the buyer listed in block 5 of the solicitation document which can be found under the Additional Information link.\nIf the Additional Information link does not work, please go to https://www.dibbs.bsm.dla.mil/Solicitations/ and type the solicitation number in the Global Search box.\n"
+              }
+          ],
+          "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=ff8dd7b93511421abc1db401cd61ecd3",
+          "organizationType": "OFFICE",
+          "officeAddress": {
+              "zipcode": "43218-3990",
+              "city": "COLUMBUS",
+              "countryCode": "USA",
+              "state": "OH"
+          },
+          "placeOfPerformance": null,
+          "additionalInfoLink": null,
+          "uiLink": "https://sam.gov/opp/ff8dd7b93511421abc1db401cd61ecd3/view",
+          "links": [
+              {
+                  "rel": "self",
+                  "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=ff8dd7b93511421abc1db401cd61ecd3&limit=1"
+              }
+          ],
+          "resourceLinks": null
+      },
+      {
+          "noticeId": "ff4b9bba3704480f84891efb0cf97df2",
+          "title": "61--MOTOR,DIRECT CURREN, IN REPAIR/MODIFICATION OF",
+          "solicitationNumber": "N0010423RZB65",
+          "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE NAVY.NAVSUP.NAVSUP WEAPON SYSTEMS SUPPORT.NAVSUP WSS MECHANICSBURG.NAVSUP WEAPON SYSTEMS SUPPORT MECH",
+          "fullParentPathCode": "017.1700.NAVSUP.NAVSUP WSS.NAVSUP WSS MECH.N00104",
+          "postedDate": "2023-06-09",
+          "type": "Solicitation",
+          "baseType": "Solicitation",
+          "archiveType": "auto15",
+          "archiveDate": "2023-07-25",
+          "typeOfSetAsideDescription": null,
+          "typeOfSetAside": "",
+          "responseDeadLine": "2023-07-10T14:00:00-04:00",
+          "naicsCode": "335312",
+          "naicsCodes": [
+              "335312"
+          ],
+          "classificationCode": "6105",
+          "active": "Yes",
+          "award": null,
+          "pointOfContact": [
+              {
+                  "fax": null,
+                  "type": "primary",
+                  "email": "BRITTANY.A.LANGLETZ@NAVY.MIL",
+                  "phone": null,
+                  "title": null,
+                  "fullName": "Telephone: 7176052982"
+              }
+          ],
+          "description": "https://api.sam.gov/prod/opportunities/v1/noticedesc?noticeid=ff4b9bba3704480f84891efb0cf97df2",
+          "organizationType": "OFFICE",
+          "officeAddress": {
+              "zipcode": "17050-0788",
+              "city": "MECHANICSBURG",
+              "countryCode": "USA",
+              "state": "PA"
+          },
+          "placeOfPerformance": null,
+          "additionalInfoLink": null,
+          "uiLink": "https://sam.gov/opp/ff4b9bba3704480f84891efb0cf97df2/view",
+          "links": [
+              {
+                  "rel": "self",
+                  "href": "https://api.sam.gov/prod/opportunities/v2/search?noticeid=ff4b9bba3704480f84891efb0cf97df2&limit=1"
+              }
+          ],
+          "resourceLinks": null
+      }
+  ]
+}
